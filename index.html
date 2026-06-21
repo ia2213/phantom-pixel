@@ -333,9 +333,32 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var
   font-family:var(--font-display);font-size:var(--text-xs);
   color:var(--color-text-faint);letter-spacing:0.06em;
 }
-.viewer-3d-card iframe{
-  display:block;width:100%;height:440px;border:0;
+/* iframe wrapper with fade transition */
+.viewer-3d-iframe-wrap{
+  position:relative;
+  background:var(--color-surface);
 }
+.viewer-3d-iframe-wrap iframe{
+  display:block;width:100%;height:440px;border:0;
+  transition:opacity 0.3s ease;
+}
+.viewer-3d-iframe-wrap.loading iframe{opacity:0}
+.viewer-3d-iframe-wrap .loader{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--color-surface-2);
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s ease;
+}
+.viewer-3d-iframe-wrap.loading .loader{opacity:1}
+.loader-ring{
+  width:36px;height:36px;border-radius:50%;
+  border:3px solid var(--color-divider);
+  border-top-color:var(--color-primary);
+  animation:spin 0.8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 /* --- Color Picker --- */
 .color-picker{
   display:flex;align-items:center;gap:var(--space-3);
@@ -357,7 +380,6 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var
   border:2px solid transparent;
   cursor:pointer;
   transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition);
-  position:relative;
 }
 .color-swatch:hover{transform:scale(1.2)}
 .color-swatch.active{
@@ -369,7 +391,7 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var
   margin-left:auto;
   font-family:var(--font-display);font-size:var(--text-xs);
   color:var(--color-text-muted);letter-spacing:0.06em;
-  transition:color var(--transition);
+  min-width:70px;text-align:right;
 }
 
 /* ===================== ESIM SECTION ===================== */
@@ -561,7 +583,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
   .payment-grid{grid-template-columns:1fr}
   .shipping-steps{grid-template-columns:1fr}
   section{padding:var(--space-10) var(--space-4)}
-  .viewer-3d-card iframe{height:320px}
+  .viewer-3d-iframe-wrap iframe{height:320px}
   .color-picker{flex-wrap:wrap;gap:var(--space-2)}
 }
 @media(max-width:480px){
@@ -674,62 +696,91 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
 <section class="reveal viewer-section" id="devices-3d">
   <div class="container">
     <div class="section-label">Interactive 3D</div>
-    <h2 class="section-title">Rotate. Inspect. <span class="accent">Order.</span></h2>
-    <p class="section-desc">Examine every angle and choose your color before you commit.</p>
+    <h2 class="section-title">Rotate. Inspect. <span class="accent">Choose your color.</span></h2>
+    <p class="section-desc">Sélectionne ta couleur — le modèle 3D se met à jour instantanément.</p>
     <div class="viewer-3d-grid">
 
-      <!-- PIXEL 10A -->
+      <!-- PIXEL 10a -->
       <div class="viewer-3d-card">
         <div class="viewer-3d-header">
           <span class="viewer-3d-dot"></span>
           <span class="viewer-3d-name">Google Pixel 10a</span>
           <span class="viewer-3d-tag">360° · Interactive</span>
         </div>
-        <iframe id="iframe-10a"
-          title="Google Pixel 10A 3D"
-          frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
-          allow="autoplay; fullscreen; xr-spatial-tracking"
-          src="https://sketchfab.com/models/da2cfbe0418e4b97abba33e40893f276/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0">
-        </iframe>
+        <div class="viewer-3d-iframe-wrap" id="wrap-10a">
+          <iframe id="iframe-10a"
+            title="Google Pixel 10a 3D"
+            frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            src="https://sketchfab.com/models/da2cfbe0418e4b97abba33e40893f276/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0">
+          </iframe>
+          <div class="loader"><div class="loader-ring"></div></div>
+        </div>
         <div class="color-picker">
           <span class="color-picker-label">Color</span>
-          <div class="color-swatches" id="swatches-10a">
-            <button class="color-swatch active" style="background:#1a1a1a" data-model="10a" data-color="Obsidian" title="Obsidian"></button>
-            <button class="color-swatch" style="background:#e8e0d5" data-model="10a" data-color="Porcelain" title="Porcelain"></button>
-            <button class="color-swatch" style="background:#8aab96" data-model="10a" data-color="Sage" title="Sage"></button>
-            <button class="color-swatch" style="background:#c4a882" data-model="10a" data-color="Hazel" title="Hazel"></button>
+          <div class="color-swatches">
+            <button class="color-swatch active" style="background:#1a1a1a"
+              data-iframe="iframe-10a" data-wrap="wrap-10a"
+              data-model="da2cfbe0418e4b97abba33e40893f276"
+              data-name="Obsidian" title="Obsidian"></button>
+            <button class="color-swatch" style="background:#e8e0d5"
+              data-iframe="iframe-10a" data-wrap="wrap-10a"
+              data-model="78df9851270f4d0f894d5a6e496b1225"
+              data-name="Porcelain" title="Porcelain"></button>
+            <button class="color-swatch" style="background:#8aab96"
+              data-iframe="iframe-10a" data-wrap="wrap-10a"
+              data-model="c402d1e9ec3e4eadaf169fb6d80e2b85"
+              data-name="Sage" title="Sage"></button>
+            <button class="color-swatch" style="background:#c4a882"
+              data-iframe="iframe-10a" data-wrap="wrap-10a"
+              data-model="282df7393bb1420c90bc602735077c54"
+              data-name="Hazel" title="Hazel"></button>
           </div>
-          <span class="color-swatch-name" id="name-10a">Obsidian</span>
+          <span class="color-swatch-name" id="label-10a">Obsidian</span>
         </div>
       </div>
 
-      <!-- PIXEL 9A -->
+      <!-- PIXEL 9a -->
       <div class="viewer-3d-card">
         <div class="viewer-3d-header">
           <span class="viewer-3d-dot"></span>
           <span class="viewer-3d-name">Google Pixel 9a</span>
           <span class="viewer-3d-tag">360° · Interactive</span>
         </div>
-        <iframe id="iframe-9a"
-          title="Google Pixel 9A 3D"
-          frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
-          allow="autoplay; fullscreen; xr-spatial-tracking"
-          src="https://sketchfab.com/models/170a5668bef147f5a43270902693e52d/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0">
-        </iframe>
+        <div class="viewer-3d-iframe-wrap" id="wrap-9a">
+          <iframe id="iframe-9a"
+            title="Google Pixel 9a 3D"
+            frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            src="https://sketchfab.com/models/170a5668bef147f5a43270902693e52d/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0">
+          </iframe>
+          <div class="loader"><div class="loader-ring"></div></div>
+        </div>
         <div class="color-picker">
           <span class="color-picker-label">Color</span>
-          <div class="color-swatches" id="swatches-9a">
-            <button class="color-swatch active" style="background:#1a1a1a" data-model="9a" data-color="Obsidian" title="Obsidian"></button>
-            <button class="color-swatch" style="background:#e8e0d5" data-model="9a" data-color="Porcelain" title="Porcelain"></button>
-            <button class="color-swatch" style="background:#8aab96" data-model="9a" data-color="Iris" title="Iris"></button>
-            <button class="color-swatch" style="background:#b0a4c8" data-model="9a" data-color="Peony" title="Peony"></button>
+          <div class="color-swatches">
+            <button class="color-swatch active" style="background:#1a1a1a"
+              data-iframe="iframe-9a" data-wrap="wrap-9a"
+              data-model="170a5668bef147f5a43270902693e52d"
+              data-name="Obsidian" title="Obsidian"></button>
+            <button class="color-swatch" style="background:#e8e0d5"
+              data-iframe="iframe-9a" data-wrap="wrap-9a"
+              data-model="e43d736337614643baa8f6e8bba4af6f"
+              data-name="Porcelain" title="Porcelain"></button>
+            <button class="color-swatch" style="background:#8aab96"
+              data-iframe="iframe-9a" data-wrap="wrap-9a"
+              data-model="c2d88f9c70aa43349018097f75fc1153"
+              data-name="Iris" title="Iris"></button>
+            <button class="color-swatch" style="background:#c8a0d8"
+              data-iframe="iframe-9a" data-wrap="wrap-9a"
+              data-model="15cca9268d964dfb90ad92032b44d0e2"
+              data-name="Peony" title="Peony"></button>
           </div>
-          <span class="color-swatch-name" id="name-9a">Obsidian</span>
+          <span class="color-swatch-name" id="label-9a">Obsidian</span>
         </div>
       </div>
 
     </div>
-    <p style="margin-top:var(--space-4);font-family:var(--font-display);font-size:var(--text-xs);color:var(--color-text-faint);letter-spacing:0.06em">ℹ️ Color selection is for reference only — the 3D model reflects the base finish. Specify your color when ordering via Session.</p>
   </div>
 </section>
 
@@ -888,7 +939,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
 </footer>
 
 <script>
-/* ---- Fix: always start at top of page, ignore any hash ---- */
+/* ---- Fix: always start at top of page ---- */
 if (window.location.hash) {
   history.replaceState(null, '', window.location.pathname);
 }
@@ -925,16 +976,34 @@ function copySessionId() {
   }
 }
 
-/* ---- Color picker ---- */
+/* ---- Color picker → swap 3D model ---- */
+const EMBED = 'autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0';
+
 document.querySelectorAll('.color-swatch').forEach(btn => {
   btn.addEventListener('click', function() {
-    const model = this.dataset.model;
-    const colorName = this.dataset.color;
-    // Update active state in this card's swatches
-    document.querySelectorAll(`[data-model="${model}"]`).forEach(s => s.classList.remove('active'));
+    const iframeId  = this.dataset.iframe;
+    const wrapId    = this.dataset.wrap;
+    const modelId   = this.dataset.model;
+    const colorName = this.dataset.name;
+
+    // Update active swatch (only within this card's swatches)
+    this.closest('.color-swatches').querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
     this.classList.add('active');
-    // Update label
-    document.getElementById(`name-${model}`).textContent = colorName;
+
+    // Update label (label id = "label-10a" / "label-9a")
+    const labelId = wrapId.replace('wrap-', 'label-');
+    document.getElementById(labelId).textContent = colorName;
+
+    // Show loading state
+    const wrap = document.getElementById(wrapId);
+    wrap.classList.add('loading');
+
+    // Swap iframe src
+    const iframe = document.getElementById(iframeId);
+    const newSrc = `https://sketchfab.com/models/${modelId}/embed?${EMBED}`;
+
+    iframe.onload = () => wrap.classList.remove('loading');
+    iframe.src = newSrc;
   });
 });
 </script>
