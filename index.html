@@ -336,6 +336,41 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var
 .viewer-3d-card iframe{
   display:block;width:100%;height:440px;border:0;
 }
+/* --- Color Picker --- */
+.color-picker{
+  display:flex;align-items:center;gap:var(--space-3);
+  padding:var(--space-3) var(--space-5);
+  border-top:1px solid var(--color-border);
+  background:var(--color-surface);
+}
+.color-picker-label{
+  font-family:var(--font-display);font-size:var(--text-xs);
+  color:var(--color-text-faint);letter-spacing:0.08em;text-transform:uppercase;
+  flex-shrink:0;
+}
+.color-swatches{
+  display:flex;align-items:center;gap:var(--space-2);
+  flex-wrap:wrap;
+}
+.color-swatch{
+  width:22px;height:22px;border-radius:50%;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition);
+  position:relative;
+}
+.color-swatch:hover{transform:scale(1.2)}
+.color-swatch.active{
+  border-color:var(--color-primary);
+  box-shadow:0 0 0 2px rgba(0,230,130,0.3);
+  transform:scale(1.15);
+}
+.color-swatch-name{
+  margin-left:auto;
+  font-family:var(--font-display);font-size:var(--text-xs);
+  color:var(--color-text-muted);letter-spacing:0.06em;
+  transition:color var(--transition);
+}
 
 /* ===================== ESIM SECTION ===================== */
 .esim-section{background:var(--color-surface)}
@@ -527,6 +562,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
   .shipping-steps{grid-template-columns:1fr}
   section{padding:var(--space-10) var(--space-4)}
   .viewer-3d-card iframe{height:320px}
+  .color-picker{flex-wrap:wrap;gap:var(--space-2)}
 }
 @media(max-width:480px){
   .hero h1{letter-spacing:-0.01em}
@@ -588,33 +624,25 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
     <p class="section-desc">Four layers of protection — from the circuit board up to the operating system. No exceptions.</p>
     <div class="mods-grid">
       <div class="mod-card reveal-delay-1">
-        <div class="mod-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 13a18.4 18.4 0 0 0 2.4-2 18.4 18.4 0 0 0 2-2.5M21 13a18.4 18.4 0 0 1-2.4-2 18.4 18.4 0 0 1-2-2.5M12 16v3M16.5 17l-1.9-1.1M7.5 17l1.9-1.1"/></svg>
-        </div>
+        <div class="mod-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 13a18.4 18.4 0 0 0 2.4-2 18.4 18.4 0 0 0 2-2.5M21 13a18.4 18.4 0 0 1-2.4-2 18.4 18.4 0 0 1-2-2.5M12 16v3M16.5 17l-1.9-1.1M7.5 17l1.9-1.1"/></svg></div>
         <h3>Camera Physically Disconnected</h3>
         <p>The camera module is hardware-disconnected at the circuit level. There is no software override possible — no app, no system process, no remote attacker can activate it.</p>
         <span class="mod-warning">⚠ Irreversible hardware mod</span>
       </div>
       <div class="mod-card reveal-delay-2">
-        <div class="mod-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
-        </div>
+        <div class="mod-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
         <h3>Microphone Physically Disconnected</h3>
         <p>All microphone components are physically disconnected at the hardware level. Voice recording, passive listening, and audio surveillance are physically impossible.</p>
         <span class="mod-warning">⚠ Irreversible hardware mod</span>
       </div>
       <div class="mod-card reveal-delay-3">
-        <div class="mod-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
+        <div class="mod-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>GPS Hardware Disabled</h3>
         <p>The GPS receiver chip is physically disabled. Hardware-level location tracking is impossible. No triangulation, no beacon data — your movement stays yours.</p>
         <span class="mod-warning">⚠ Irreversible hardware mod</span>
       </div>
       <div class="mod-card">
-        <div class="mod-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        </div>
+        <div class="mod-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
         <h3>De-Googled OS &amp; Full Clean-Up</h3>
         <p>Complete removal of all Google services, Play Store telemetry, carrier bloatware, and hidden administrator backdoors. Replaced with GrapheneOS — the only privacy-first OS we trust.</p>
       </div>
@@ -647,44 +675,61 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
   <div class="container">
     <div class="section-label">Interactive 3D</div>
     <h2 class="section-title">Rotate. Inspect. <span class="accent">Order.</span></h2>
-    <p class="section-desc">Examine every angle of your future device before you commit.</p>
+    <p class="section-desc">Examine every angle and choose your color before you commit.</p>
     <div class="viewer-3d-grid">
 
+      <!-- PIXEL 10A -->
       <div class="viewer-3d-card">
         <div class="viewer-3d-header">
           <span class="viewer-3d-dot"></span>
           <span class="viewer-3d-name">Google Pixel 10a</span>
           <span class="viewer-3d-tag">360° · Interactive</span>
         </div>
-        <iframe
+        <iframe id="iframe-10a"
           title="Google Pixel 10A 3D"
-          frameborder="0"
-          allowfullscreen
-          mozallowfullscreen="true"
-          webkitallowfullscreen="true"
+          frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
           allow="autoplay; fullscreen; xr-spatial-tracking"
           src="https://sketchfab.com/models/da2cfbe0418e4b97abba33e40893f276/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0">
         </iframe>
+        <div class="color-picker">
+          <span class="color-picker-label">Color</span>
+          <div class="color-swatches" id="swatches-10a">
+            <button class="color-swatch active" style="background:#1a1a1a" data-model="10a" data-color="Obsidian" title="Obsidian"></button>
+            <button class="color-swatch" style="background:#e8e0d5" data-model="10a" data-color="Porcelain" title="Porcelain"></button>
+            <button class="color-swatch" style="background:#8aab96" data-model="10a" data-color="Sage" title="Sage"></button>
+            <button class="color-swatch" style="background:#c4a882" data-model="10a" data-color="Hazel" title="Hazel"></button>
+          </div>
+          <span class="color-swatch-name" id="name-10a">Obsidian</span>
+        </div>
       </div>
 
+      <!-- PIXEL 9A -->
       <div class="viewer-3d-card">
         <div class="viewer-3d-header">
           <span class="viewer-3d-dot"></span>
           <span class="viewer-3d-name">Google Pixel 9a</span>
           <span class="viewer-3d-tag">360° · Interactive</span>
         </div>
-        <iframe
+        <iframe id="iframe-9a"
           title="Google Pixel 9A 3D"
-          frameborder="0"
-          allowfullscreen
-          mozallowfullscreen="true"
-          webkitallowfullscreen="true"
+          frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
           allow="autoplay; fullscreen; xr-spatial-tracking"
           src="https://sketchfab.com/models/170a5668bef147f5a43270902693e52d/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0">
         </iframe>
+        <div class="color-picker">
+          <span class="color-picker-label">Color</span>
+          <div class="color-swatches" id="swatches-9a">
+            <button class="color-swatch active" style="background:#1a1a1a" data-model="9a" data-color="Obsidian" title="Obsidian"></button>
+            <button class="color-swatch" style="background:#e8e0d5" data-model="9a" data-color="Porcelain" title="Porcelain"></button>
+            <button class="color-swatch" style="background:#8aab96" data-model="9a" data-color="Iris" title="Iris"></button>
+            <button class="color-swatch" style="background:#b0a4c8" data-model="9a" data-color="Peony" title="Peony"></button>
+          </div>
+          <span class="color-swatch-name" id="name-9a">Obsidian</span>
+        </div>
       </div>
 
     </div>
+    <p style="margin-top:var(--space-4);font-family:var(--font-display);font-size:var(--text-xs);color:var(--color-text-faint);letter-spacing:0.06em">ℹ️ Color selection is for reference only — the 3D model reflects the base finish. Specify your color when ordering via Session.</p>
   </div>
 </section>
 
@@ -843,14 +888,22 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
 </footer>
 
 <script>
+/* ---- Fix: always start at top of page, ignore any hash ---- */
+if (window.location.hash) {
+  history.replaceState(null, '', window.location.pathname);
+}
+window.scrollTo(0, 0);
+
+/* ---- Hamburger ---- */
 const ham = document.getElementById('hamburger');
-const nav = document.getElementById('navLinks');
+const navEl = document.getElementById('navLinks');
 ham.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
+  const open = navEl.classList.toggle('open');
   ham.setAttribute('aria-expanded', open);
 });
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+navEl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navEl.classList.remove('open')));
 
+/* ---- Scroll reveal ---- */
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -859,6 +912,7 @@ const observer = new IntersectionObserver((entries) => {
 }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
 reveals.forEach(r => observer.observe(r));
 
+/* ---- Copy Session ID ---- */
 function copySessionId() {
   const id = '0531d7e05112d6af6e4e78d0a808b385ad86bff018041030d090b5b9d63835b10d';
   const hint = document.getElementById('copyHint');
@@ -870,6 +924,19 @@ function copySessionId() {
     });
   }
 }
+
+/* ---- Color picker ---- */
+document.querySelectorAll('.color-swatch').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const model = this.dataset.model;
+    const colorName = this.dataset.color;
+    // Update active state in this card's swatches
+    document.querySelectorAll(`[data-model="${model}"]`).forEach(s => s.classList.remove('active'));
+    this.classList.add('active');
+    // Update label
+    document.getElementById(`name-${model}`).textContent = colorName;
+  });
+});
 </script>
 </body>
 </html>
