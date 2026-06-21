@@ -310,6 +310,10 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var
 .esim-card{
   background:var(--color-surface-2);
   border:1px solid var(--color-border);
+  .viewer-3d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);margin-top:var(--space-6);}
+.viewer-3d-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);transition:border-color var(--transition);}
+.viewer-3d-card:hover{border-color:rgba(0,230,130,0.3);}
+.viewer-3d-label{font-family:var(--font-display);font-size:var(--text-sm);color:var(--color-primary);margin-bottom:var(--space-3);letter-spacing:0.06em;text-align:center;}
   border-radius:var(--radius-2xl);
   padding:clamp(var(--space-8),4vw,var(--space-12));
   margin-top:var(--space-10);
@@ -648,10 +652,16 @@ footer{
     </div>
 
     <div class="device-showcase">
-      <img src="images/pixel10a-lavender.svg" alt="Google Pixel phone" class="device-img">
-      <img src="images/pixel10a-berry.svg" alt="Google Pixel device" class="device-img">
-      <img src="images/pixel10a-fog.svg" alt="Pixel smartphone" class="device-img">
-    </div>
+              <div class="viewer-3d-grid">
+          <div class="viewer-3d-card">
+            <div class="viewer-3d-label">Pixel 10a — Vue 3D</div>
+            <iframe title="Google Pixel 10A" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/da2cfbe0418e4b97abba33e40893f276/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0" style="width:100%;height:420px;border-radius:12px;"></iframe>
+          </div>
+          <div class="viewer-3d-card">
+            <div class="viewer-3d-label">Pixel 9a — Vue 3D</div>
+            <iframe title="Google Pixel 9A" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/170a5668bef147f5a43270902693e52d/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0" style="width:100%;height:420px;border-radius:12px;"></iframe>
+          </div>
+        </div>div>
   </div>
 </section>
 
