@@ -310,15 +310,13 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var
 .esim-card{
   background:var(--color-surface-2);
   border:1px solid var(--color-border);
-  .viewer-3d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);margin-top:var(--space-6);}
-.viewer-3d-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);transition:border-color var(--transition);}
-.viewer-3d-card:hover{border-color:rgba(0,230,130,0.3);}
-.viewer-3d-label{font-family:var(--font-display);font-size:var(--text-sm);color:var(--color-primary);margin-bottom:var(--space-3);letter-spacing:0.06em;text-align:center;}
-  border-radius:var(--radius-2xl);
-  padding:clamp(var(--space-8),4vw,var(--space-12));
-  margin-top:var(--space-10);
-  position:relative;overflow:hidden;
-}
+      .viewer-section{background:var(--color-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);}
+    .viewer-3d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);margin-top:var(--space-10);}
+    .viewer-3d-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition),box-shadow var(--transition);}
+    .viewer-3d-card:hover{border-color:rgba(0,230,130,0.4);box-shadow:0 0 30px rgba(0,230,130,0.08);}
+    .viewer-3d-badge{display:inline-block;font-family:var(--font-display);font-size:var(--text-xs);font-weight:700;color:var(--color-primary);background:var(--color-primary-dim);border:1px solid rgba(0,230,130,0.25);border-radius:var(--radius-md);padding:4px 12px;letter-spacing:0.1em;margin:var(--space-4) 0 0 var(--space-4);}
+    .viewer-3d-label{font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text-muted);padding:var(--space-2) var(--space-4) var(--space-3);}
+    .viewer-3d-card iframe{display:block;border-radius:0 0 var(--radius-lg) var(--radius-lg);}
 .esim-card::after{
   content:'eSIM';
   position:absolute;right:var(--space-8);top:50%;transform:translateY(-50%);
@@ -651,21 +649,31 @@ footer{
       </div>
     </div>
 
-    <div class="device-showcase">
-              <div class="viewer-3d-grid">
-          <div class="viewer-3d-card">
-            <div class="viewer-3d-label">Pixel 10a — Vue 3D</div>
-            <iframe title="Google Pixel 10A" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/da2cfbe0418e4b97abba33e40893f276/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0" style="width:100%;height:420px;border-radius:12px;"></iframe>
-          </div>
-          <div class="viewer-3d-card">
-            <div class="viewer-3d-label">Pixel 9a — Vue 3D</div>
-            <iframe title="Google Pixel 9A" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/170a5668bef147f5a43270902693e52d/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0" style="width:100%;height:420px;border-radius:12px;"></iframe>
-          </div>
-        </div>div>
-  </div>
-</section>
+        </div>
+  </section>
 
-<!-- ESIM -->
+  <!-- 3D DEVICE VIEWER -->
+  <section class="reveal viewer-section" id="devices-3d">
+    <div class="container">
+      <div class="section-label">Explore en 3D</div>
+      <h2 class="section-title">Tourne. Inspecte. <span class="accent">Commande.</span></h2>
+      <p class="section-desc">Visualise chaque appareil sous tous les angles avant de commander.</p>
+      <div class="viewer-3d-grid">
+        <div class="viewer-3d-card">
+          <div class="viewer-3d-badge">PIXEL 10A</div>
+          <div class="viewer-3d-label">Vue 3D interactive</div>
+          <iframe title="Google Pixel 10A 3D" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/da2cfbe0418e4b97abba33e40893f276/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0" style="width:100%;height:460px;border:0;"></iframe>
+        </div>
+        <div class="viewer-3d-card">
+          <div class="viewer-3d-badge">PIXEL 9A</div>
+          <div class="viewer-3d-label">Vue 3D interactive</div>
+          <iframe title="Google Pixel 9A 3D" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/170a5668bef147f5a43270902693e52d/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&camera=0" style="width:100%;height:460px;border:0;"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ ESIM -->
 <section class="esim-section reveal" id="esim">
   <div class="container">
     <div class="section-label">Optional Add-On</div>
