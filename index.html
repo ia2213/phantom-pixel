@@ -4,33 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PhantomPixel — De-Googled Devices</title>
-<meta name="description" content="Fully de-Googled Google Pixel smartphones with physical hardware modifications for maximum privacy. No tracking, no surveillance, just freedom.">
+<meta name="description" content="Fully de-Googled Google Pixel smartphones with physical hardware modifications for maximum privacy. No tracking, no surveillance, just freedom. GrapheneOS only.">
 <meta property="og:title" content="PhantomPixel — Maximum Privacy Smartphones">
-<meta property="og:description" content="De-Googled Pixel devices with hardware-disabled mic, camera & GPS. GrapheneOS, /e/OS or CalyxOS. Pay with XMR/ZEC.">
+<meta property="og:description" content="De-Googled Pixel devices with hardware-disabled mic, camera & GPS. GrapheneOS. Pay with XMR/ZEC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===================== TOKENS ===================== */
 :root {
-  --color-bg:             #080a0c;
-  --color-surface:        #0d1117;
-  --color-surface-2:      #111820;
+  --color-bg:            #080a0c;
+  --color-surface:       #0d1117;
+  --color-surface-2:     #111820;
   --color-surface-offset: #161e28;
   --color-surface-dynamic:#1e2836;
-  --color-divider:        #1f2d3d;
-  --color-border:         rgba(0,230,130,0.12);
-  --color-text:           #e2e8f0;
-  --color-text-muted:     #8fa3b1;
-  --color-text-faint:     #4a6070;
-  --color-primary:        #00e682;
-  --color-primary-hover:  #00cc74;
+  --color-divider:       #1f2d3d;
+  --color-border:        rgba(0,230,130,0.12);
+  --color-text:          #e2e8f0;
+  --color-text-muted:    #8fa3b1;
+  --color-text-faint:    #4a6070;
+  --color-primary:       #00e682;
+  --color-primary-hover: #00cc74;
   --color-primary-active: #00b366;
-  --color-primary-glow:   rgba(0,230,130,0.15);
-  --color-primary-dim:    rgba(0,230,130,0.06);
-  --color-danger:         #ff4444;
-  --color-warning:        #f59e0b;
-  --color-blue:           #38bdf8;
+  --color-primary-glow:  rgba(0,230,130,0.15);
+  --color-primary-dim:   rgba(0,230,130,0.06);
+  --color-danger:        #ff4444;
+  --color-warning:       #f59e0b;
+  --color-blue:          #38bdf8;
   --font-display: 'JetBrains Mono', monospace;
   --font-body: 'Inter', sans-serif;
   --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -40,12 +40,12 @@
   --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
   --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
   --text-3xl:  clamp(2.5rem, 1rem + 4vw, 5rem);
-  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
-  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
-  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
-  --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
-  --radius-sm: 0.25rem; --radius-md: 0.5rem; --radius-lg: 0.75rem;
-  --radius-xl: 1rem; --radius-2xl: 1.5rem; --radius-full: 9999px;
+  --space-1: 0.25rem;  --space-2: 0.5rem;   --space-3: 0.75rem;
+  --space-4: 1rem;     --space-5: 1.25rem;  --space-6: 1.5rem;
+  --space-8: 2rem;     --space-10: 2.5rem;  --space-12: 3rem;
+  --space-16: 4rem;    --space-20: 5rem;    --space-24: 6rem;
+  --radius-sm: 0.25rem;  --radius-md: 0.5rem;  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;     --radius-2xl: 1.5rem; --radius-full: 9999px;
   --transition: 180ms cubic-bezier(0.16,1,0.3,1);
   --shadow-glow: 0 0 30px rgba(0,230,130,0.12);
   --shadow-md: 0 4px 24px rgba(0,0,0,0.4);
@@ -58,7 +58,7 @@
 /* ===================== BASE ===================== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:4rem;-webkit-font-smoothing:antialiased}
-body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.6;overflow-x:hidden}
+body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.6;overflow-x:clip}
 img,svg{display:block;max-width:100%}
 ul[role=list],ol[role=list]{list-style:none}
 input,button,textarea,select{font:inherit;color:inherit}
@@ -131,10 +131,10 @@ nav{
 
 /* ===================== HERO ===================== */
 .hero{
-  position:relative;min-height:100vh;
+  position:relative;min-height:90vh;
   display:flex;align-items:center;justify-content:center;
   text-align:center;overflow:hidden;
-  padding:var(--space-24) var(--space-6) var(--space-16);
+  padding:var(--space-20) var(--space-6) var(--space-12);
 }
 .hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto}
 .hero-badge{
@@ -188,7 +188,7 @@ nav{
 .btn-ghost:hover{border-color:var(--color-primary);color:var(--color-primary)}
 .hero-stats{
   display:flex;align-items:center;justify-content:center;gap:var(--space-8);
-  margin-top:var(--space-16);
+  margin-top:var(--space-12);
   padding-top:var(--space-8);
   border-top:1px solid var(--color-divider);
   flex-wrap:wrap;
@@ -201,7 +201,7 @@ nav{
 .hero-stat .label{font-size:var(--text-xs);color:var(--color-text-faint);text-transform:uppercase;letter-spacing:0.08em}
 
 /* ===================== SECTION COMMONS ===================== */
-section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var(--space-6)}
+section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-20)) var(--space-6)}
 .container{max-width:var(--content-default);margin:0 auto}
 .container-wide{max-width:var(--content-wide);margin:0 auto}
 .section-label{
@@ -264,10 +264,10 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var
 }
 
 /* ===================== OS SECTION ===================== */
-.os-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-10)}
 .os-card{
   background:var(--color-surface-2);border:1px solid var(--color-border);
-  border-radius:var(--radius-lg);padding:var(--space-6);
+  border-radius:var(--radius-lg);padding:var(--space-8);
+  max-width:600px;margin:var(--space-10) auto 0;
   display:flex;flex-direction:column;
   transition:all var(--transition);text-align:center;
 }
@@ -276,7 +276,7 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var
   font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;
   color:var(--color-primary);margin-bottom:var(--space-2);
 }
-.os-card p{font-size:var(--text-sm);color:var(--color-text-muted)}
+.os-card p{font-size:var(--text-sm);color:var(--color-text-muted);margin:0 auto}
 .os-badge{
   display:inline-block;font-family:var(--font-display);font-size:var(--text-xs);
   padding:var(--space-1) var(--space-3);margin-bottom:var(--space-4);
@@ -284,6 +284,26 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var
   border-radius:var(--radius-full);color:var(--color-primary);
   letter-spacing:0.06em;align-self:center;
 }
+.os-features{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:var(--space-3);margin-top:var(--space-6);text-align:left;
+}
+.os-feature{
+  font-size:var(--text-sm);color:var(--color-text-muted);
+  padding:var(--space-2);
+}
+
+/* ===================== DEVICE SHOWCASE ===================== */
+.device-showcase{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:var(--space-6);margin-top:var(--space-10);
+}
+.device-img{
+  width:100%;height:auto;border-radius:var(--radius-lg);
+  border:1px solid var(--color-border);
+  transition:transform var(--transition);
+}
+.device-img:hover{transform:scale(1.02)}
 
 /* ===================== ESIM SECTION ===================== */
 .esim-section{background:var(--color-surface)}
@@ -303,7 +323,7 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var
   white-space:nowrap;
 }
 .esim-features{
-  display:grid;grid-template-columns:repeat(2,1fr);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:var(--space-4);margin-top:var(--space-6);
 }
 .esim-feature{
@@ -376,7 +396,7 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var
 
 /* ===================== PAYMENT SECTION ===================== */
 .payment-section{background:var(--color-surface)}
-.payment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-10)}
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);margin-top:var(--space-10)}
 .payment-card{
   background:var(--color-surface-2);border:1px solid var(--color-border);
   border-radius:var(--radius-xl);padding:var(--space-8);
@@ -401,13 +421,8 @@ section{position:relative;padding:clamp(var(--space-12),8vw,var(--space-24)) var
 /* ===================== SHIPPING ===================== */
 .shipping-section{background:var(--color-bg)}
 .shipping-steps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-10);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--space-4);margin-top:var(--space-10);
   position:relative;
-}
-.shipping-steps::before{
-  content:'';position:absolute;top:36px;left:calc(16.66% + var(--space-4));right:calc(16.66% + var(--space-4));
-  height:1px;background:linear-gradient(90deg,var(--color-primary),rgba(0,230,130,0.2),var(--color-primary));
-  opacity:0.3;z-index:0;
 }
 .step-card{
   background:var(--color-surface);border:1px solid var(--color-border);
@@ -500,73 +515,63 @@ footer{
 .reveal-delay-3{transition-delay:0.3s}
 
 /* ===================== MOBILE ===================== */
+@media(max-width:900px){
+  .session-card{grid-template-columns:1fr}
+}
 @media(max-width:768px){
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(8,10,12,0.97);padding:var(--space-6);flex-direction:column;gap:var(--space-4);border-bottom:1px solid var(--color-border)}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
   .nav-cta{display:none}
-  .os-grid{grid-template-columns:1fr}
-  .session-card{grid-template-columns:1fr}
+  .hero{min-height:80vh;padding:var(--space-16) var(--space-4) var(--space-10)}
+  .hero-stats{gap:var(--space-6)}
+  .mods-grid{grid-template-columns:1fr}
+  .esim-features{grid-template-columns:1fr}
   .payment-grid{grid-template-columns:1fr}
   .shipping-steps{grid-template-columns:1fr}
-  .shipping-steps::before{display:none}
-  .esim-features{grid-template-columns:1fr}
-  .hero-stats{gap:var(--space-6)}
+  section{padding:var(--space-10) var(--space-4)}
 }
 @media(max-width:480px){
   .hero h1{letter-spacing:-0.01em}
   .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center}
 }
 </style>
 </head>
 <body>
+
 <div class="scanline"></div>
 
 <!-- NAV -->
-<nav role="navigation" aria-label="Main navigation">
+<nav>
   <div class="nav-logo">
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M8 14h3l2-5 2 10 2-7 1 2h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    PHANTOM<span style="color:var(--color-primary)">PIXEL</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.9V12c0 5.5-3.8 10.7-9 12-5.2-1.3-9-6.5-9-12V6.9L12 2z"/><path d="M12 12l-4-2M12 12l4-2M12 12v6"/></svg>
+    <span>PHANTOM <span style="color:var(--color-primary)">PIXEL</span></span>
   </div>
-  <div class="nav-links" id="navLinks" role="list">
-    <a href="#modifications" role="listitem">Modifications</a>
-    <a href="#os" role="listitem">OS</a>
-    <a href="#esim" role="listitem">eSIM</a>
-    <a href="#buy" role="listitem">Order</a>
-    <a href="#shipping" role="listitem">Shipping</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#modifications">Modifications</a>
+    <a href="#os">OS</a>
+    <a href="#esim">eSIM</a>
+    <a href="#buy">Order</a>
+    <a href="#shipping">Shipping</a>
   </div>
-  <a href="#buy" class="nav-cta">Order Now</a>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+  <a href="#buy" class="nav-cta">ORDER NOW</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- HERO -->
-<section class="hero" aria-labelledby="hero-heading">
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="radial-fade" aria-hidden="true"></div>
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="radial-fade"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="dot" aria-hidden="true"></span>Maximum Privacy Devices</div>
-    <h1 id="hero-heading">
-      Your phone.<br>
-      <span class="accent">Not theirs.</span>
-    </h1>
-    <p class="hero-sub">
-      Fully de-Googled Google Pixel smartphones with physical hardware modifications.
-      No tracking. No surveillance. Just a phone that works — for you.
-    </p>
+    <div class="hero-badge"><span class="dot"></span>Maximum Privacy Devices</div>
+    <h1>Your phone. <br><span class="accent">Not theirs.</span></h1>
+    <p class="hero-sub">Fully de-Googled Google Pixel smartphones with physical hardware modifications. No tracking. No surveillance. Just a phone that works — for you.</p>
     <div class="hero-actions">
-      <a href="#buy" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Contact via Session
-      </a>
-      <a href="#modifications" class="btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-        See Modifications
-      </a>
+      <a href="#buy" class="btn-primary">Contact via Session</a>
+      <a href="#modifications" class="btn-ghost">See Modifications</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><span class="num">100%</span><span class="label">De-Googled</span></div>
@@ -577,161 +582,171 @@ footer{
   </div>
 </section>
 
-<!-- MODIFICATIONS -->
-<section class="mods-section" id="modifications" aria-labelledby="mods-title">
+<!-- MODS -->
+<section class="mods-section reveal" id="modifications">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Hardware &amp; Software</p>
-    <h2 class="section-title" id="mods-title">Every device is <span class="accent">surgically modified</span></h2>
+    <div class="section-label">Hardware & Software</div>
+    <h2 class="section-title">Every device is <span class="accent">surgically modified</span></h2>
     <p class="section-desc">Four layers of protection — from the circuit board up to the operating system. No exceptions.</p>
-    <div class="mods-grid" role="list">
-
-      <article class="mod-card reveal" role="listitem">
-        <div class="mod-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l18 18"/><path d="M12 18.89A9 9 0 1 0 5.11 12"/><circle cx="12" cy="12" r="3"/></svg>
+    
+    <div class="mods-grid">
+      <div class="mod-card reveal-delay-1">
+        <div class="mod-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 13a18.4 18.4 0 0 0 2.4-2 18.4 18.4 0 0 0 2-2.5M21 13a18.4 18.4 0 0 1-2.4-2 18.4 18.4 0 0 1-2-2.5M12 16v3M16.5 17l-1.9-1.1M7.5 17l1.9-1.1"/></svg>
         </div>
         <h3>Camera Physically Disconnected</h3>
         <p>The camera module is hardware-disconnected at the circuit level. There is no software override possible — no app, no system process, no remote attacker can activate it.</p>
-        <span class="mod-warning" aria-label="Irreversible modification">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          Irreversible hardware mod
-        </span>
-      </article>
+        <span class="mod-warning">⚠ Irreversible hardware mod</span>
+      </div>
 
-      <article class="mod-card reveal reveal-delay-1" role="listitem">
-        <div class="mod-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l18 18"/><path d="M8.7 8.7a4 4 0 0 0 5.6 5.6"/><path d="M12 6a6 6 0 0 1 6 6"/></svg>
+      <div class="mod-card reveal-delay-2">
+        <div class="mod-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
         </div>
         <h3>Microphone Physically Disconnected</h3>
         <p>All microphone components are physically disconnected at the hardware level. Voice recording, passive listening, and audio surveillance are physically impossible.</p>
-        <span class="mod-warning" aria-label="Irreversible modification">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          Irreversible hardware mod
-        </span>
-      </article>
+        <span class="mod-warning">⚠ Irreversible hardware mod</span>
+      </div>
 
-      <article class="mod-card reveal reveal-delay-2" role="listitem">
-        <div class="mod-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l18 18"/><path d="M10.5 10.5A3 3 0 0 0 13.5 13.5"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13"/></svg>
+      <div class="mod-card reveal-delay-3">
+        <div class="mod-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <h3>GPS Hardware Disabled</h3>
         <p>The GPS receiver chip is physically disabled. Hardware-level location tracking is impossible. No triangulation, no beacon data — your movement stays yours.</p>
-        <span class="mod-warning" aria-label="Irreversible modification">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          Irreversible hardware mod
-        </span>
-      </article>
+        <span class="mod-warning">⚠ Irreversible hardware mod</span>
+      </div>
 
-      <article class="mod-card reveal reveal-delay-3" role="listitem">
-        <div class="mod-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div class="mod-card">
+        <div class="mod-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
         </div>
-        <h3>De-Googled OS &amp; Full Clean-Up</h3>
-        <p>Complete removal of all Google services, Play Store telemetry, carrier bloatware, and hidden administrator backdoors. Replaced with a privacy-first operating system of your choice.</p>
-      </article>
-
+        <h3>De-Googled OS & Full Clean-Up</h3>
+        <p>Complete removal of all Google services, Play Store telemetry, carrier bloatware, and hidden administrator backdoors. Replaced with GrapheneOS — the only privacy-first OS we trust.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- OS OPTIONS -->
-<section id="os" aria-labelledby="os-title">
+<!-- OS -->
+<section class="reveal" id="os">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Choose Your OS</p>
-    <h2 class="section-title" id="os-title">We only use <span class="accent">GrapheneOS</span></h2>
+    <div class="section-label">Choose Your OS</div>
+    <h2 class="section-title">We only use <span class="accent">GrapheneOS</span></h2>
     <p class="section-desc">We exclusively install GrapheneOS — the most rigorously hardened privacy OS available for Android devices. No alternatives, no compromises.</p>
-    <div style="margin-top:var(--space-10)" role="list">
-      <article class="os-card reveal" role="listitem" style="max-width:520px;text-align:left;padding:var(--space-8)">
-        <span class="os-badge">ONLY AVAILABLE OS</span>
-        <p class="os-name">GrapheneOS</p>
-        <p>The gold standard for Android privacy. Hardened security model, verified boot, and memory-safe patches. Used by security professionals, journalists, and privacy advocates worldwide. No Google services. No telemetry. No compromises.</p>
-        <div style="margin-top:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)">
-          <div class="why-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Hardened memory allocator</div>
-          <div class="why-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Verified boot with rollback protection</div>
-          <div class="why-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Network &amp; sensor permission controls per-app</div>
-          <div class="why-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Regular security patches, open-source audited</div>
-        </div>
-      </article>
+    
+    <div class="os-card">
+      <div class="os-badge">ONLY AVAILABLE OS</div>
+      <div class="os-name">GrapheneOS</div>
+      <p>The gold standard for Android privacy. Hardened security model, verified boot, and memory-safe patches. Used by security professionals, journalists, and privacy advocates worldwide. No Google services. No telemetry. No compromises.</p>
+      <div class="os-features">
+        <div class="os-feature">✓ Hardened memory allocator</div>
+        <div class="os-feature">✓ Verified boot with rollback protection</div>
+        <div class="os-feature">✓ Network & sensor permission controls per-app</div>
+        <div class="os-feature">✓ Regular security patches, open-source audited</div>
+      </div>
+    </div>
+
+    <div class="device-showcase">
+      <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=600&fit=crop" alt="Google Pixel phone" class="device-img">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=600&fit=crop" alt="Google Pixel device" class="device-img">
+      <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&h=600&fit=crop" alt="Pixel smartphone" class="device-img">
     </div>
   </div>
 </section>
 
 <!-- ESIM -->
-<section class="esim-section" id="esim" aria-labelledby="esim-title">
+<section class="esim-section reveal" id="esim">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Optional Add-On</p>
-    <h2 class="section-title" id="esim-title">Annual <span class="accent">Anonymous eSIM</span></h2>
+    <div class="section-label">Optional Add-On</div>
+    <h2 class="section-title">Annual <span class="accent">Anonymous eSIM</span></h2>
     <p class="section-desc">Stay connected without leaving a trace. Add a fully anonymous SIM to your order.</p>
-    <div class="esim-card reveal">
-      <div class="esim-features" role="list">
-        <div class="esim-feature reveal" role="listitem">
-          <svg class="esim-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <div><h4>Anonymous Number</h4><p>Prepaid eSIM with no personal identification required. Valid for 12 months.</p></div>
+    
+    <div class="esim-card">
+      <div class="esim-features">
+        <div class="esim-feature">
+          <svg class="esim-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <h4>Anonymous Number</h4>
+            <p>Prepaid eSIM with no personal identification required. Valid for 12 months.</p>
+          </div>
         </div>
-        <div class="esim-feature reveal reveal-delay-1" role="listitem">
-          <svg class="esim-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <div><h4>4G/5G Data Included</h4><p>High-speed data connectivity wherever you go.</p></div>
+        <div class="esim-feature">
+          <svg class="esim-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <h4>4G/5G Data Included</h4>
+            <p>High-speed data connectivity wherever you go.</p>
+          </div>
         </div>
-        <div class="esim-feature reveal reveal-delay-2" role="listitem">
-          <svg class="esim-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <div><h4>No Identity Link</h4><p>Zero personal identification needed. Your number cannot be traced back to you.</p></div>
+        <div class="esim-feature">
+          <svg class="esim-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <h4>No Identity Link</h4>
+            <p>Zero personal identification needed. Your number cannot be traced back to you.</p>
+          </div>
         </div>
-        <div class="esim-feature reveal reveal-delay-3" role="listitem">
-          <svg class="esim-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <div><h4>Discreet Communication</h4><p>Ideal for journalists, activists, and privacy-conscious professionals.</p></div>
+        <div class="esim-feature">
+          <svg class="esim-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <h4>Discreet Communication</h4>
+            <p>Ideal for journalists, activists, and privacy-conscious professionals.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW TO BUY -->
-<section class="buy-section" id="buy" aria-labelledby="buy-title">
+<!-- BUY -->
+<section class="buy-section reveal" id="buy">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Order Process</p>
-    <h2 class="section-title" id="buy-title">Contact us via <span class="accent">Session only</span></h2>
+    <div class="section-label">Order Process</div>
+    <h2 class="section-title">Contact us via <span class="accent">Session only</span></h2>
     <p class="section-desc">We communicate exclusively through Session — the encrypted, metadata-free messaging protocol. No phone number, no email, no trace.</p>
-    <div class="session-card reveal">
+    
+    <div class="session-card">
       <div>
-        <h3 style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-2)">Why Session?</h3>
-        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6)">Unlike Signal or WhatsApp, Session requires no phone number or email to register, and collects zero metadata.</p>
+        <h3>Why Session?</h3>
+        <p style="color:var(--color-text-muted);margin-bottom:var(--space-4)">Unlike Signal or WhatsApp, Session requires no phone number or email to register, and collects zero metadata.</p>
+        
         <div class="session-why">
-          <h4>Protected by design</h4>
-          <div class="why-list" role="list">
-            <div class="why-item" role="listitem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              No phone number required to register
+          <h4>PROTECTED BY DESIGN</h4>
+          <div class="why-list">
+            <div class="why-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>No phone number required to register</span>
             </div>
-            <div class="why-item" role="listitem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              No email address linked to your account
+            <div class="why-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>No email address linked to your account</span>
             </div>
-            <div class="why-item" role="listitem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Zero metadata collection or logging
+            <div class="why-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zero metadata collection or logging</span>
             </div>
-            <div class="why-item" role="listitem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              End-to-end encrypted by default
+            <div class="why-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>End-to-end encrypted by default</span>
             </div>
-            <div class="why-item" role="listitem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Decentralized — no central server to subpoena
+            <div class="why-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Decentralized — no central server to subpoena</span>
             </div>
           </div>
         </div>
       </div>
+      
       <div class="session-id-block">
         <h3>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Our Session ID
         </h3>
-        <div class="session-id" id="sessionId" onclick="copySessionId()" role="button" tabindex="0" aria-label="Copy Session ID to clipboard" onkeydown="if(event.key==='Enter'||event.key===' ')copySessionId()">
-          0531d7e05112d6af6e4e78d0a808b385ad86bff018041030d090b5b9d63835b10d
-        </div>
+        <div class="session-id" onclick="copySessionId()">0531d7e05112d6af6e4e78d0a808b385ad86bff018041030d090b5b9d63835b10d</div>
         <p class="copy-hint" id="copyHint">click to copy</p>
+        
         <div class="response-time">
-          <span class="response-dot" aria-hidden="true"></span>
-          We reply within 24 hours
+          <span class="response-dot"></span>
+          <span>We reply within 24 hours</span>
         </div>
       </div>
     </div>
@@ -739,67 +754,65 @@ footer{
 </section>
 
 <!-- PAYMENT -->
-<section class="payment-section" id="payment" aria-labelledby="payment-title">
+<section class="payment-section reveal">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Accepted Payment</p>
-    <h2 class="section-title" id="payment-title">Pay with <span class="accent">untraceable crypto</span></h2>
+    <div class="section-label">Accepted Payment</div>
+    <h2 class="section-title">Pay with <span class="accent">untraceable crypto</span></h2>
     <p class="section-desc">We exclusively accept privacy-preserving cryptocurrencies. No bank transfers, no cards, no identity trail.</p>
-    <div class="payment-grid" role="list">
-      <article class="payment-card reveal" role="listitem">
+    
+    <div class="payment-grid">
+      <div class="payment-card">
         <div class="payment-ticker">XMR</div>
         <div class="payment-name">Monero</div>
         <p class="payment-desc">The leading privacy cryptocurrency. Ring signatures, stealth addresses, and RingCT make transactions completely untraceable — even on the public ledger.</p>
-        <span class="payment-why">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Fully anonymous · Unlinkable transactions
-        </span>
-      </article>
-      <article class="payment-card reveal reveal-delay-1" role="listitem">
+        <span class="payment-why">✓ Fully anonymous · Unlinkable transactions</span>
+      </div>
+      
+      <div class="payment-card">
         <div class="payment-ticker">ZEC</div>
         <div class="payment-name">Zcash</div>
         <p class="payment-desc">Zero-knowledge proof cryptography (zk-SNARKs) provides mathematical privacy guarantees. Shielded transactions are verifiable without revealing any details.</p>
-        <span class="payment-why">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          zk-SNARKs · Shielded transactions
-        </span>
-      </article>
+        <span class="payment-why">✓ zk-SNARKs · Shielded transactions</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SHIPPING -->
-<section class="shipping-section" id="shipping" aria-labelledby="shipping-title">
+<section class="shipping-section reveal" id="shipping">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Delivery</p>
-    <h2 class="section-title" id="shipping-title">Discreet <span class="accent">secure shipping</span></h2>
+    <div class="section-label">Delivery</div>
+    <h2 class="section-title">Discreet <span class="accent">secure shipping</span></h2>
     <p class="section-desc">Your package leaves no trail. No branding, no indication of contents — just a tracking number.</p>
-    <div class="shipping-steps" role="list">
-      <article class="step-card reveal" role="listitem">
-        <div class="step-num" aria-hidden="true">01</div>
+    
+    <div class="shipping-steps">
+      <div class="step-card">
+        <div class="step-num">01</div>
         <h3>Payment Confirmed</h3>
         <p>Once your XMR or ZEC payment is verified, your order enters the processing queue immediately.</p>
-      </article>
-      <article class="step-card reveal reveal-delay-1" role="listitem">
-        <div class="step-num" aria-hidden="true">02</div>
-        <h3>Packaged &amp; Sealed</h3>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Packaged & Sealed</h3>
         <p>Device packaged in a plain, unmarked parcel. No indication of brand, product type, or origin.</p>
-      </article>
-      <article class="step-card reveal reveal-delay-2" role="listitem">
-        <div class="step-num" aria-hidden="true">03</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
         <h3>48h Dispatch</h3>
         <p>Shipped within 48 business hours. A tracking number is sent to you via Session upon dispatch.</p>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- NOTICE -->
-<section class="notice-section" aria-labelledby="notice-title">
+<section class="notice-section reveal">
   <div class="container">
-    <p class="section-label" aria-hidden="true">Important Notice</p>
-    <h2 class="section-title" id="notice-title">Before you <span class="accent">order</span></h2>
-    <div class="notice-box reveal" role="note">
-      <svg class="notice-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <div class="section-label">Important Notice</div>
+    <h2 class="section-title">Before you <span class="accent">order</span></h2>
+    
+    <div class="notice-box">
+      <svg class="notice-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <ul>
         <li>These devices are intended for privacy-conscious individuals — journalists, activists, security professionals, and anyone who values their digital autonomy.</li>
         <li>Hardware modifications are <strong>irreversible</strong>. The microphone, camera, and GPS cannot be re-enabled after modification.</li>
@@ -811,25 +824,22 @@ footer{
 </section>
 
 <!-- CTA -->
-<section class="cta-section" aria-labelledby="cta-title">
-  <div class="cta-glow" aria-hidden="true"></div>
-  <h2 id="cta-title">Take back control<br>of your <span style="color:var(--color-primary)">digital life</span></h2>
+<section class="cta-section reveal">
+  <div class="cta-glow"></div>
+  <h2>Take back control <br>of your <span class="accent">digital life</span></h2>
   <p>Contact us on Session. We'll handle everything — from OS selection to discreet delivery.</p>
   <a href="#buy" class="btn-primary">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    Message Us on Session
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+    MESSAGE US ON SESSION
   </a>
 </section>
 
 <!-- FOOTER -->
-<footer role="contentinfo">
+<footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M8 14h3l2-5 2 10 2-7 1 2h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      PHANTOMPIXEL
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.9V12c0 5.5-3.8 10.7-9 12-5.2-1.3-9-6.5-9-12V6.9L12 2z"/></svg>
+      <span>PHANTOMPIXEL</span>
     </div>
     <p class="footer-note">Encrypted. Anonymous. Private. — Session only.</p>
   </div>
@@ -848,7 +858,12 @@ nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.cla
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
 }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
 reveals.forEach(r => observer.observe(r));
 
@@ -860,29 +875,13 @@ function copySessionId() {
     navigator.clipboard.writeText(id).then(() => {
       hint.textContent = '✓ copied to clipboard';
       hint.style.color = 'var(--color-primary)';
-      setTimeout(() => { hint.textContent = 'click to copy'; hint.style.color = ''; }, 2500);
+      setTimeout(() => {
+        hint.textContent = 'click to copy';
+        hint.style.color = '';
+      }, 2500);
     });
   }
 }
-
-// Animate numbers in hero
-function animateNum(el, target, suffix='') {
-  let start = 0;
-  const step = () => {
-    start += Math.ceil(target / 40);
-    if(start >= target) { el.textContent = target + suffix; return; }
-    el.textContent = start + suffix;
-    requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-window.addEventListener('load', () => {
-  const stats = document.querySelectorAll('.hero-stat .num');
-  stats[0].textContent = '100%';
-  stats[1].textContent = '3';
-  stats[2].textContent = '48h';
-  stats[3].textContent = 'XMR/ZEC';
-});
 </script>
 </body>
 </html>
